@@ -19,7 +19,7 @@ $(document).ready(function() {
 	//outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport
 	$('#intro').parallax("50%", 0, 0.1, true);
 	$('#second').parallax("25%", 2800, 0.1, true);
-	$('#fourth').parallax("5%", 4050, 0.6, true);
+	$('#fourth').parallax("5%", 3900, 0.6, true);
 	
 
   var deck = new $.scrolldeck({
