@@ -1,0 +1,9 @@
+/* CSS declarations go here */
+.feature {
+	margin-bottom: 250px;
+	font-size: 1.2em;
+}
+
+body {
+	background-image: url('dino-jpeg');
+}
