@@ -1,0 +1,64 @@
+
+
+/* ===== Primary Styles ========================================================
+   Author:
+   ========================================================================== */
+
+body {
+
+}
+
+.slide {
+	padding: 		200px 100px 200px 100px;
+	height: 		600px;
+	/*width:			1200px;*/
+	font-size: 	1.2em;
+}
+
+#nav{
+	list-style: none;
+	position: fixed;
+	right: 20px;
+	z-index: 999;
+}
+
+#nav li{
+	margin: 0 0 15px 0;	
+}
+
+#nav li a {
+	display: block;
+	width: 10px;
+	height: 10px;
+	border-radius: 10px;
+	background-color: white;
+	border: solid 2px rgb(214,223,50);
+}
+
+#nav li a.current {
+	background-color: orange;
+}
+
+#intro {
+	background: url(../img/dino.jpeg) 50% -75px no-repeat fixed;
+}
+
+#second {
+	background: url(../img/coin.jpeg) 50% 0 no-repeat fixed;
+}
+
+#third {
+	background: url(../img/bg.png) 50% 0 no-repeat fixed;
+}
+
+#fourth {
+	background: url(../img/kids.jpeg) 50% 0 no-repeat fixed;
+}
+
+
+
+
+
+
+
+
