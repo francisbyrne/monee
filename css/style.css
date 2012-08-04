@@ -4,14 +4,10 @@
    Author:
    ========================================================================== */
 
-body {
-
-}
 
 .slide {
-	padding: 		200px 100px 200px 100px;
+	padding: 		100px 100px 200px 100px;
 	height: 		600px;
-	/*width:			1200px;*/
 	font-size: 	1.2em;
 }
 
@@ -56,7 +52,17 @@ body {
 	background: url(../img/kids.jpeg) 50% 0 no-repeat fixed;
 }
 
+.pad-sml {
+	padding-top: 50px;
+}
 
+.pad-med {
+	padding-top: 100px;
+}
+
+.pad-lrg {
+	padding-top: 200px;
+}
 
 
 
