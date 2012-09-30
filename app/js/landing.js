@@ -1,8 +1,3 @@
-/* Author:
-
-*/
-
-
 $(document).ready(function() {
 //$('#nav').localScroll(800);
 	
@@ -28,7 +23,3 @@ $(document).ready(function() {
 		easing: 'easeInOutExpo'
   });
 });
-
-
-
-
