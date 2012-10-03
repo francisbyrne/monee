@@ -6,6 +6,19 @@
 function LandingCtrl() {}
 LandingCtrl.$inject = [];
 
+// TODO: allow user to type currency symbol without screwing it up.
+// TODO: localisation for datepicker
+function GoalsCtrl($scope, $filter) {
 
-function GetCtrl() {}
-GetCtrl.$inject = [];
+	$scope.today = new Date();
+
+	$scope.weeklySaving = function () {
+		var period = Math.ceil(($scope.goalEndDate - $scope.today) / (1000*60*60*24*7));
+		var totalSavings = $scope.goalTarget - $scope.goalCurrentSavings;
+
+		return Math.ceil(totalSavings/period);
+	};
+
+}
+
+GoalsCtrl.$inject = ['$scope', '$filter'];
