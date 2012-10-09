@@ -3,27 +3,37 @@
 <br />
 <br />
 
-<form class="form-horizontal">
-  <p>
-  	<label>What do you want?</label> 
-  	<input ng-model='goalName'>
-  </p>
-  <p>
-  	<label>How much does it cost?</label>
-  	<input ng-model='goalTarget'>
-  </p>
-  <p>
-  	<label>When do you want it by?<label>
-  		<input ng-model='goalEndDate' ui-date>
-  	</p>
-  <p>
-  	<label>How much do you have now?</label>
-  	<input ng-model='goalCurrentSavings'>
-  </p>
-</form>
+<div class='container'>
+	<div class='row'>
+	<form>
+		<legend>Savings Calculator</legend>
+	  <p>
+	  	<label>What do you want?</label> 
+	  	<input class='input-medium' type='text' ng-model='goalName'>
+	  </p>
+	  <p>
+	  	<label>How much does it cost?</label>
+	  	<span class="input-prepend">
+	  		<span class="add-on">$</span><input class='input-small' type='text' ng-model='goalTarget'>
+	  	</span>
+	  </p>
+	  <p>
+	  	<label>How much do you have now?</label>
+	  	<span class="input-prepend">
+	  		<span class="add-on">$</span><input class='input-small' type='text' ng-model='goalCurrentSavings'>
+	  	</span>
+	  </p>
+	  <p>
+	  	<label>When do you want it by?<label>
+	  		<input class='input-medium' type='text' ng-model='goalEndDate' ui-date>
+	  </p>
+	</form>
+	</div>
 
-<div class='span1'></div>
-<div class='span10'>
-	<h2>{{goalName}}</h2>
-	<div id='result'>To achieve a goal of {{goalTarget | currency}} by {{goalEndDate | date:'fullDate'}} with {{goalCurrentSavings | currency}} currently, you will need to save {{weeklySaving() | currency}} per week.</div>
+	<div class='row'>
+		<h2>{{goalName}}</h2>
+		<div id='result'>To achieve your goal of {{goalTarget | currency}} by {{goalEndDate | date:'fullDate'}} with {{goalCurrentSavings | currency}} currently, you will need to save {{weeklySaving() | currency}} per week.</div>
+	</div>
 </div>
+
+

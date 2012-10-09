@@ -16,7 +16,7 @@ function GoalsCtrl($scope, $filter) {
 		var period = Math.ceil(($scope.goalEndDate - $scope.today) / (1000*60*60*24*7));
 		var totalSavings = $scope.goalTarget - $scope.goalCurrentSavings;
 
-		return Math.ceil(totalSavings/period);
+		return totalSavings > 0 ? Math.ceil(totalSavings/period) : 0;
 	};
 
 }
