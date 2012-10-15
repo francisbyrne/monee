@@ -46,7 +46,7 @@ function GoalsCtrl($scope, $filter) {
             text: 'My ' + ( $scope.goalName ? $scope.goalName : 'Goal' )
         },
         subtitle: {
-            text: 'Here\'s how long it will take to achieve your goal.'
+            text: 'You will need to save $' + ($scope.weeklySaving()) + ' per week to achieve your goal.'
         },
         xAxis: {
             type: 'datetime',
