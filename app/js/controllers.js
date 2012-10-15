@@ -43,7 +43,7 @@ function GoalsCtrl($scope, $filter) {
             margin: [70, 50, 60, 80]
         },
         title: {
-            text: 'Savings Goal'
+            text: 'My ' + ( $scope.goalName ? $scope.goalName : 'Goal' )
         },
         subtitle: {
             text: 'Here\'s how long it will take to achieve your goal.'
