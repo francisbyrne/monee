@@ -26,17 +26,48 @@ function GoalsCtrl($scope, $filter) {
 	var ONE_WEEK = 1000 * 60 * 60 * 24 * 7;
 
     // calculate weekly savings required based on form inputs
-    $scope.today = new Date();
-    $scope.goalEndDate = new Date();
-    $scope.weeklySaving = function () {
-        var period = Math.ceil(($scope.goalEndDate - $scope.today) / (ONE_WEEK));
+    var today = new Date();
+
+    var calculateWeeklySaving = function () {
+        var period = Math.ceil(($scope.goalEndDate - today) / (ONE_WEEK));
         var totalSavings = $scope.goalTarget - $scope.goalCurrentSavings;
 
         return totalSavings > 0 ? Math.ceil(totalSavings/period) : 0;
     };
 
+    // calculate the days it will take to reach the goal target
+    var calculateEndDate = function () {
+    	var days = Math.ceil( ($scope.goalTarget - $scope.goalCurrentSavings) / ($scope.goalWeeklySaving / 7) );
+    	var date = new Date();
+    	date.setDate(today.getDate() + days);
+    	return date;
+    }
+
+    $scope.endDate = function () {
+    	if ( $scope.goalEndDate ) {
+    		return $scope.goalEndDate;
+    	} else if ( $scope.goalWeeklySaving ) {
+    	 	return calculateEndDate();
+    	} else {
+    		return today;
+    	}
+    };
+
+    $scope.subtitle = function () {
+    	if ( $scope.goalEndDate ) {
+    		return 'You will need to save $' + calculateWeeklySaving() + ' per week to achieve your goal.';
+    	} else if ( $scope.goalWeeklySaving ) {
+    		return 'You will reach your goal by ' + calculateEndDate().toDateString() + '.';
+    	}
+    };
+
+    $scope.trigger = function () {
+    	return $scope.goalEndDate + $scope.goalName + $scope.goalTarget + $scope.goalWeeklySaving + $scope.goalCurrentSavings;
+    };
+
     // watch the weeklySaving value and redraw the savings graph when it changes
-    $scope.$watch('weeklySaving()', function (newVal, oldVal) {
+    //$scope.$watch('trigger()', function (newVal, oldVal) {
+    $scope.drawGraph = function () {
       var chart = new Highcharts.Chart({
         chart: {
             renderTo: 'graph',
@@ -46,13 +77,11 @@ function GoalsCtrl($scope, $filter) {
             text: 'My ' + ( $scope.goalName ? $scope.goalName : 'Goal' )
         },
         subtitle: {
-            text: 'You will need to save $' + ($scope.weeklySaving()) + ' per week to achieve your goal.'
+            text: $scope.subtitle()
         },
         xAxis: {
             type: 'datetime',
-            tickInterval: ONE_WEEK,
-            tickWidth: 1,
-            gridLineWidth: 1,
+            startOnTick: false,
             labels: {
                 align: 'center',
                 x: 0,
@@ -73,6 +102,11 @@ function GoalsCtrl($scope, $filter) {
             },
             showFirstLabel: false
         },
+        tooltip: {
+        	crosshairs: true,
+        	valuePrefix: '$',
+        	xDateFormat: '%Y-%m-%d',
+        },
         legend: {
             enabled: false
         },
@@ -81,12 +115,12 @@ function GoalsCtrl($scope, $filter) {
         },
         series: [{
         	// data is based on input values
-            data: [[$scope.today.getTime(), parseFloat($scope.goalCurrentSavings)],
-            		[$scope.goalEndDate.getTime(), parseFloat($scope.goalTarget)]],
-            name: $scope.goalName
+            data: [[today.getTime(), parseFloat($scope.goalCurrentSavings)],
+            		[ $scope.endDate().getTime(), parseFloat($scope.goalTarget)]],
+            name: 'Savings'
         }]
     });
-	});
+	};
 
 }
 GoalsCtrl.$inject = ['$scope', '$filter'];

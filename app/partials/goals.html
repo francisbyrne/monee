@@ -5,8 +5,8 @@
 
 <div class='container'>
 	<div class='row'>
-		<div id='savings-form' class='span5'>
-			<form>
+		<div id='savings-form' class='span6'>
+			<form ng-submit='drawGraph()'>
 				<legend>Savings Calculator</legend>
 				<div class='row'>
 				  <div class='span2'>
@@ -19,12 +19,6 @@
 				  		<span class="add-on">$</span><input class='input-small' type='text' ng-model='goalTarget'>
 				  	</span>
 				  </div>
-				</div>
-				<div class='row'>
-				  <div class='span2'>
-				  	<label>When do you want it by?</label>
-				  		<input class='input-medium' type='text' ng-model='goalEndDate' ui-date>
-				  </div>
 				  <div class='span2'>
 				  	<label>How much do you have?</label>
 				  	<span class="input-prepend">
@@ -32,10 +26,41 @@
 				  	</span>
 				  </div>
 				</div>
+				<br />
+				<ul class='nav nav-list'>
+					<li class='divider'></li>
+				</ul>
+				<br />
+				<div class='row'>
+				  <div class='span2'>
+				  	<label>When do you want it by?</label>
+				  	<input class='input-medium' type='text' ng-model='goalEndDate' ui-date>
+				  </div>
+				  <div class='span2' style='text-align:center'>
+				  	<br />
+				  	or
+					</div>
+					<div class='span2'>
+				  	<label>What's your weekly saving?</label>
+				  	<span class="input-prepend">
+				  		<span class="add-on">$</span><input class='input-small' type='text' ng-model='goalWeeklySaving'>
+				  	</span>
+				  </div>
+				</div>
+				<br />
+				<ul class='nav nav-list'>
+					<li class='divider'></li>
+				</ul>
+				<br />
+				<div class='row'>
+					<div class='span2 offset4'>
+						<button type="submit" class="btn btn-large btn-primary">Generate Graph</button>
+					</div>
+				</div>
 			</form>
 		</div>
-		
-		<div id='graph' class='span7'>
+
+		<div id='graph' class='span6'>
 		</div>
 
 	</div>
